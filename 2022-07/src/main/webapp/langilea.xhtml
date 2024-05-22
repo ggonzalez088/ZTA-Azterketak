@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+<h:panelGroup rendered="#{!langileaAtazakMB.langileaEgiaztatuDB(langileaViewMB)}">
+<h:form>
+	<h:selectOneMenu value="#{esleipenaFormMB.indexgela}">
+		<f:selectItems value="#{langileaViewMB.baimenakLortuDB()}" var="ba"    itemValue="#{langileaViewMB.baimenakLortuDB().indexOf(ba)}"  itemLabel="#{ba.gela}"/>
+	</h:selectOneMenu>
+	<h:commandButton action="#{langileaAtazakMB.erabilpenaSartuDB(esleipenaFormMB,langileaViewMB)}" value="SARTU" />
+</h:form>
+
+
+</h:panelGroup>
+<h:panelGroup rendered="#{langileaAtazakMB.langileaEgiaztatuDB(langileaViewMB)}">
+	<h:form>
+		<h:commandButton action="#{langileaAtazakMB.erabilpenaAmaitu(langileaViewMB)}" value="IRTEN" />
+	</h:form>
+
+
+</h:panelGroup>
+</body> 
+</html>
