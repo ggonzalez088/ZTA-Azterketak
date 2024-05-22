@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+
+<h1 align="center">PANDEMIAREN KONTROLA</h1>
+
+<h:form>
+Ohartarazteko tenperatura:
+<h:inputText value="#{tenpFormMB.tenperatura}" />ºC<br />
+<h:commandButton action="#{kontrolViewMB.ataritikGoraLortuDB(tenpFormMB)}" value="TAULA BISTARATU" />
+</h:form>
+<h:panelGroup rendered="#{kontrolViewMB.pertsonak.size()>0}">
+	<h:form>
+	<h:dataTable value="#{kontrolViewMB.pertsonak}" var="p" border="1" >
+		<h:column>
+		<f:facet name="header">ID</f:facet>
+		#{p.id}
+		</h:column>
+		<h:column>
+		<f:facet name="header">TENPERATURA</f:facet>
+		#{p.tenperatura}ºC
+		</h:column>
+		<h:column>
+		<f:facet name="header">OHARTARAZIA</f:facet>
+		<h:outputText value="BAI" rendered="#{p.ohartarazia}" />
+		<h:outputText value="EZ" rendered="#{!p.ohartarazia}" />
+		</h:column>
+		<h:column>
+		<f:facet name="header">HERRIA</f:facet>
+		#{p.herria.izena}
+		</h:column>
+	</h:dataTable>
+	<h:commandButton action="#{kontrolAtazakMB.ohartarazi(kontrolViewMB.pertsonak,kontrolViewMB)}" value="OHARTARAZI" />
+	</h:form>
+</h:panelGroup>
+
+
+</body> 
+</html>
