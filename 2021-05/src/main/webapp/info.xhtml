@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+<h:panelGroup rendered="#{atazakMB.pantaila==0}">
+
+<h1>INFORMAZIOA SARTZEA</h1>
+<h2>Kategoria Berria</h2>
+
+<h:form>
+	Izena:<h:inputText value="#{katFormMB.izena}" required="true" requiredMessage="ERROREA,izena derrigorrezkoa da"/><br/>
+	Deskribapena:<h:inputText value="#{katFormMB.deskribapena}" /><br/>
+	<h:commandButton action="#{atazakMB.kategoriaSartuDB(katFormMB)}" value="KATEGORIA BILTEGIRATU" />
+</h:form>
+
+<h2>Leku Berria</h2>
+
+<h:form>
+	Izena:<h:inputText value="#{lekuFormMB.izena}" /><br/>
+	Latitudea:<h:inputText value="#{lekuFormMB.latitudea}" /><br/>
+	Longitudea:<h:inputText value="#{lekuFormMB.longitudea}" /><br/>
+	Deskribapena:<h:inputText value="#{lekuFormMB.deskribapena}" /><br/>
+	<table>
+		<tr>
+			<td>
+			<h:selectOneMenu value="#{lekuFormMB.indexkat}">
+				<f:selectItems value="#{viewMB.kategoriakLortuDB()}" var="kl" itemValue="#{viewMB.kategoriakLortuDB().indexOf(kl)}" itemLabel="#{kl.izena}"/>
+			</h:selectOneMenu>
+			</td>
+			<td>
+				<h:commandButton action="#{atazakMB.kategoriaZerrendaratu(lekuFormMB.indexkat,viewMB)}" value="Kategoria aukeratu" />
+			</td>
+		</tr>
+	</table>
+	
+	<h:panelGroup rendered="#{atazakMB.partZerrenda.size()>0}">
+	Aukeratutako kategoriak:
+		<h:dataTable value="#{atazakMB.partZerrenda}" var="pZ"  border="1">
+		<h:column>
+			#{pZ.izena}
+		</h:column>
+		
+		</h:dataTable>
+		</h:panelGroup>
+	<table>
+	<tr>
+		<td>
+		<h:commandButton action="#{atazakMB.lekuaSartuDB(lekuFormMB,viewMB)}" value="LEKUA BILTEGIRATU" />
+		</td>
+		<td>
+		<h:commandButton action="#{atazakMB.pantailaTaula(viewMB)}" value="TAULA" />
+		</td>
+	</tr>
+	</table>
+</h:form>
+</h:panelGroup>
+<h:panelGroup rendered="#{atazakMB.pantaila==1}">
+<h1>INFORMAZIOA BISTARATZEA	</h1>
+<h2>Biltegiratukoa</h2>
+<h:form>
+<h:dataTable value="#{viewMB.lekuKatJBLortuDB()}" var="lkJB" border="1">
+	<h:column>
+		<f:facet name="header">Izena</f:facet>
+		#{lkJB.lekE.izena}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Kokapena</f:facet>
+		#{lkJB.lekE.latitudea},#{lkJB.lekE.longitudea}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Deskribapena</f:facet>
+		#{lkJB.lekE.deskribapena}
+	</h:column>
+	<h:column>
+		<f:facet name="header">Kategoriak</f:facet>
+		<ui:repeat  value="#{lkJB.kategoriakE}"  var="katE">
+			<h:outputText value="#{katE.izena}" />
+		</ui:repeat>
+	</h:column>
+	<h:column>
+		<f:facet name="header">EKINTZA</f:facet>
+		<h:commandButton action="#{atazakMB.lekuaEzabatuDB(lkJB,viewMB)}" value="EZABATU" />
+	</h:column>
+
+
+</h:dataTable>
+
+</h:form>
+<h:form>
+<h:commandButton action="#{atazakMB.pantailaInformazioa(viewMB)}" value="INFORMAZIO GEHIAGO SARTU" />
+</h:form>
+</h:panelGroup>
+</body> 
+</html>
