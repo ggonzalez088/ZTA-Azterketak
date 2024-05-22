@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+<h:panelGroup rendered="#{kudAtazakMB.pantaila==0}">
+<h1>KUDEAKETA</h1>
+
+<h:form>
+<table>
+	<tr>
+		<td>
+			Data
+		</td>
+		<td>
+			#{kudViewMB.dataLortu()}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Izenburua:
+		</td>
+		<td>
+			<h:inputText value="#{berriaFormMB.izenburua}" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Testua:	
+		</td>
+		<td>
+			<h:inputTextarea value="#{berriaFormMB.testua}" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Kategoriak:
+		</td>
+		<td>
+			<h:selectOneMenu value="#{berriaFormMB.indexkat}">
+				<f:selectItems value="#{kudViewMB.kategoriakLortuDB()}" var="k" itemValue="#{kudViewMB.kategoriakLortuDB().indexOf(k)}" itemLabel="#{k.izena}"/>
+			</h:selectOneMenu>	
+			<h:commandButton action="#{kudAtazakMB.katZerrendaratu(berriaFormMB.indexkat,kudViewMB)}" value="AUKERATU" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			
+		</td>
+		<td>
+			Aukeratutako kategoriak:
+			<h:dataTable value="#{kudAtazakMB.katZerrenda}" var="e" border="1" rendered="#{kudAtazakMB.katZerrenda.size()>0}">
+				<h:column>
+					#{e.izena}
+				</h:column>
+			</h:dataTable>	
+		</td>
+	</tr>
+
+</table>
+
+<h:commandButton action="#{kudAtazakMB.berriaSartuDB(berriaFormMB,kudViewMB)}" value="BERRIA DATU-BASEAN SARTU" />
+
+</h:form>
+
+</h:panelGroup>
+<h:panelGroup rendered="#{kudAtazakMB.pantaila==1}">
+<h1>BERRIA DATU-BASEAN SARTU DA</h1>
+<table>
+	<tr>
+		<td>
+			<h:form>
+			<h:commandButton action="#{kudAtazakMB.pantailaBerria(kudViewMB)}" value="BESTE BERRI BAT SARTU" />
+			</h:form>
+		</td>
+		<td>
+			<form action="./blog.xhtml" >
+				<input type="submit" value="BIRKARGATU"/>
+			</form>
+		</td>
+	</tr>
+</table>
+</h:panelGroup>
+</body> 
+</html>
