@@ -28,28 +28,24 @@ public class BerriaE implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idBerria;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="`argitalpen-data`")
 	private Date argitalpen_data;
 
 	private String izenburua;
 
 	private String testua;
-	
 
 	public BerriaE() {
 	}
 
-	
 	public BerriaE(int idBerria, Date argitalpen_data, String izenburua, String testua) {
 		super();
 		this.idBerria = idBerria;
 		this.argitalpen_data = argitalpen_data;
 		this.izenburua = izenburua;
 		this.testua = testua;
-		
 	}
-
 
 	public int getIdBerria() {
 		return this.idBerria;
@@ -82,8 +78,5 @@ public class BerriaE implements Serializable {
 	public void setTestua(String testua) {
 		this.testua = testua;
 	}
-
-
-
 
 }

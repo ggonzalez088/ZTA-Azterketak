@@ -20,9 +20,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Esleipena")
 @NamedQueries({
-@NamedQuery(name="EsleipenaE.findAll", query="SELECT e FROM EsleipenaE e"),
-@NamedQuery(name="EsleipenaE.findKategoria", query="SELECT e FROM EsleipenaE e WHERE e.kategoria.idKategoria=:idKategoria"),
+	
+	@NamedQuery(name="EsleipenaE.findAll", query="SELECT e FROM EsleipenaE e"),
+	@NamedQuery(name="EsleipenaE.findKategoria", query="SELECT e FROM EsleipenaE e WHERE e.kategoria.idKategoria=:idKategoria"),
+	
 })
+
 public class EsleipenaE implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -43,12 +46,14 @@ public class EsleipenaE implements Serializable {
 	public EsleipenaE() {
 	}
 
+	
 	public EsleipenaE(int idEsleipena, BerriaE berria, KategoriaE kategoria) {
 		super();
 		this.idEsleipena = idEsleipena;
 		this.berria = berria;
 		this.kategoria = kategoria;
 	}
+
 
 	public int getIdEsleipena() {
 		return this.idEsleipena;

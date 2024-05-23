@@ -29,15 +29,16 @@ public class KategoriaE implements Serializable {
 	public KategoriaE() {
 	}
 
-	public int getIdKategoria() {
-		return this.idKategoria;
-	}
-
 	
 	public KategoriaE(int idKategoria, String izena) {
 		super();
 		this.idKategoria = idKategoria;
 		this.izena = izena;
+	}
+
+
+	public int getIdKategoria() {
+		return this.idKategoria;
 	}
 
 	public void setIdKategoria(int idKategoria) {
