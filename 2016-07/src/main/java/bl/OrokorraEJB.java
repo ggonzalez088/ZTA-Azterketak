@@ -51,7 +51,8 @@ public class OrokorraEJB {
 	public void fitxategiaLortu(String izena) {
 		List<TestuaE> testuak=(List<TestuaE>)em.createNamedQuery("TestuaE.findIrudia").setParameter("izena", izena).getResultList();
 		List<ZirkuluaE> zirkuluak=(List<ZirkuluaE>)em.createNamedQuery("ZirkuluaE.findIrudia").setParameter("izena", izena).getResultList();
+		IrudiaE irudia=em.find(IrudiaE.class,izena);
 		SVGFitx fitxa =new SVGFitx();
-		fitxa.formaGuztiakIdatzi(zirkuluak, testuak);
+		fitxa.formaGuztiakIdatzi(zirkuluak, testuak,irudia.getHeight(),irudia.getWidth());
 	}
 }

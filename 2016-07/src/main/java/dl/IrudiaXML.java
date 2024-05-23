@@ -2,6 +2,7 @@ package dl;
 
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="svg")
@@ -9,7 +10,8 @@ public class IrudiaXML {
 	
 	private List<ZirkuluaE> zirkuluak;
 	private List<TestuaE> testuak;
-	
+	private int height;
+	private int width;
 	
 	public IrudiaXML() {
 	}
@@ -30,5 +32,19 @@ public class IrudiaXML {
 	}
 	public void setTestuak(List<TestuaE> testuak) {
 		this.testuak = testuak;
+	}
+	@XmlAttribute
+	public int getHeight() {
+		return height;
+	}
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	@XmlAttribute
+	public int getWidth() {
+		return width;
+	}
+	public void setWidth(int width) {
+		this.width = width;
 	}
 }
