@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+<h:form>
+	<table border="1">
+		<tr>
+			<th>Cx</th>
+			<th>Cy</th>
+			<th>KOLOREA</th>
+			<th>ERRADIOA</th>
+		</tr>
+		<tr>
+			<td><h:inputText value="#{zirkuluaFormMB.cx}" /></td>
+			<td><h:inputText value="#{zirkuluaFormMB.cy}" /></td>
+			<td><h:inputText value="#{zirkuluaFormMB.fill}" /></td>
+			<td><h:inputText value="#{zirkuluaFormMB.r}" /></td>
+		
+		</tr>
+	
+	</table><br />
+<h:commandButton action="index" actionListener="#{atazakMB.zirkuluaSartuDB(zirkuluaFormMB,viewMB)}" value="SARTU" />
+
+
+</h:form>
+</body> 
+</html>

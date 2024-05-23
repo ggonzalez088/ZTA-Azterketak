@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+<h1 align="center">HASIERA</h1>
+<h:form>
+	<h:dataTable value="#{viewMB.irudiaLortuDB()}" var="i" border="1">
+	<h:column>
+	<f:facet name="header">IZENA</f:facet>
+	#{i.irudia.izena}
+	</h:column>
+	<h:column>
+	<f:facet name="header">ZABALERA</f:facet>
+	#{i.irudia.width}
+	</h:column>
+	<h:column>
+	<f:facet name="header">ALTUERA</f:facet>
+	#{i.irudia.height}
+	</h:column>
+	<h:column>
+	<f:facet name="header">ZIRKULU KOPURUA</f:facet>
+	#{i.zirkulukop}
+	</h:column>
+	<h:column>
+	<f:facet name="header">TESTU KOPURUA</f:facet>
+	#{i.testukop}
+	</h:column>
+	<h:column>
+	<f:facet name="header">EKINTZA</f:facet>
+	<h:commandButton action="#{atazakMB.irudiaEzabatuDB(i.irudia.izena,viewMB)}" value="EZABATU" />
+	<h:commandButton action="zirkulua" actionListener="#{atazakMB.izenaEzarri(i.irudia.izena)}" value="ZIRKULUA SARTU" />
+	<h:commandButton action="testua" actionListener="#{atazakMB.izenaEzarri(i.irudia.izena)}" value="TESTUA SARTU" />
+	<h:commandButton action="#{atazakMB.fitxategiaLortu(i.irudia.izena)}" value="FITXATEGIA LORTU" />
+	</h:column>
+	</h:dataTable>
+</h:form>
+<br/>
+<h:form>
+	<table border="1">
+		<tr>
+			<th>IZENA</th>
+			<th>ZABALERA</th>
+			<th>ALTUERA</th>
+		</tr>
+		<tr>
+			<td><h:inputText value="#{irudiaFormMB.izena}" /></td>
+			<td><h:inputText value="#{irudiaFormMB.zabalera}" /></td>
+			<td><h:inputText value="#{irudiaFormMB.altuera}" /></td>
+		
+		</tr>
+	
+	</table><br />
+<h:commandButton action="#{atazakMB.irudiaSartuDB(irudiaFormMB,viewMB)}" value="SARTU" />
+
+
+</h:form>
+
+</body> 
+</html>
